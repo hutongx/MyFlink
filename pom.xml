@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.my_flink</groupId>
+    <artifactId>my_flink_project</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>My Flink Project</name>
+
+    <modules>
+        <module>ioT_flink_kafka</module>
+    </modules>
+
+    <properties>
+        <lombok.version>1.18.24</lombok.version>
+        <kafka.version>3.9.0</kafka.version>
+        <flink.version>1.20.1</flink.version>
+        <!-- 与 Flink Scala 版本对应 -->
+        <scala.binary.version>2.12</scala.binary.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>${kafka.version}</version>
+            </dependency>
+
+            <!-- ==== Flink 核心 ==== -->
+            <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-java -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-streaming-java</artifactId>
+                <version>1.20.1</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-clients -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-clients</artifactId>
+                <version>1.20.1</version>
+            </dependency>
+            <!-- ==== Flink Kafka Connector ==== -->
+<!--            <dependency>-->
+<!--                <groupId>org.apache.flink</groupId>-->
+<!--                <artifactId>flink-connector-kafka_${scala.binary.version}</artifactId>-->
+<!--                <version>${flink.version}</version>-->
+<!--            </dependency>-->
+            <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-connector-kafka -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-connector-kafka</artifactId>
+                <version>3.4.0-1.20</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
