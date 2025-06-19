@@ -40,6 +40,10 @@ public class KafkaCarProducer {
                     if (exception != null) {
                         exception.printStackTrace();
                     }
+                    else {
+                        System.out.printf("Sent record with key %s to partition %d at offset %d%n",
+                                carData.getCarId(), metadata.partition(), metadata.offset());
+                    }
                 });
             } catch (Exception e) {
                 e.printStackTrace();
