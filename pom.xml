@@ -12,6 +12,7 @@
 
     <modules>
         <module>ioT_flink_kafka</module>
+        <module>ioT_flink_kafka_improve1</module>
     </modules>
 
     <properties>
