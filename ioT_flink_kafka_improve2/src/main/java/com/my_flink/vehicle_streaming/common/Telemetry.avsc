@@ -1,0 +1,12 @@
+{
+  "namespace": "com.my_flink.vehicle_streaming.common",
+  "type": "record",
+  "name": "Telemetry",
+  "fields": [
+    {"name": "vehicleId", "type": "string"},
+    {"name": "timestamp", "type": "long"},
+    {"name": "speed", "type": "double"},
+    {"name": "soc", "type": "int"},
+    {"name": "event", "type": ["null","string"], "default": null}
+  ]
+}

@@ -13,6 +13,9 @@
     <modules>
         <module>ioT_flink_kafka</module>
         <module>ioT_flink_kafka_improve1</module>
+        <module>ioT_flink_kafka_improve2</module>
+        <module>jd_interview</module>
+        <module>uv-sliding-uv</module>
     </modules>
 
     <properties>
@@ -21,10 +24,31 @@
         <flink.version>1.20.1</flink.version>
         <!-- 与 Flink Scala 版本对应 -->
         <scala.binary.version>2.12</scala.binary.version>
+        <spring-boot.version>2.7.18</spring-boot.version>
+        <spring-kafka.version>3.3.6</spring-kafka.version>
+        <avro.version>1.10.2</avro.version>
+        <hll.version>1.6.0</hll.version>
+        <stream.version>2.9.6</stream.version>
+        <fastjson.version>1.2.83</fastjson.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+<!--            <dependency>-->
+<!--                <groupId>org.apache.flink</groupId>-->
+<!--                <artifactId>flink-bom</artifactId>-->
+<!--                <version>${flink.version}</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
+
+            <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-cep -->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-cep</artifactId>
+                <version>${flink.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
@@ -38,14 +62,13 @@
             </dependency>
 
             <!-- ==== Flink 核心 ==== -->
-            <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-streaming-java -->
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-streaming-java</artifactId>
                 <version>1.20.1</version>
 <!--                <scope>provided</scope>-->
             </dependency>
-            <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-clients -->
+
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-clients</artifactId>
@@ -63,6 +86,61 @@
                 <artifactId>flink-connector-kafka</artifactId>
                 <version>3.4.0-1.20</version>
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot.version}</version>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.kafka</groupId>
+                <artifactId>spring-kafka</artifactId>
+                <version>${spring-kafka.version}</version>
+            </dependency>
+
+            <!-- Avro -->
+            <dependency>
+                <groupId>org.apache.avro</groupId>
+                <artifactId>avro</artifactId>
+                <version>${avro.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>net.agkn</groupId>
+                <artifactId>hll</artifactId>
+                <version>${hll.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-statebackend-rocksdb</artifactId>
+                <version>${flink.version}</version>
+            </dependency>
+
+            <!-- HyperLogLog 近似计数 -->
+            <dependency>
+                <groupId>com.clearspring.analytics</groupId>
+                <artifactId>stream</artifactId>
+                <version>${stream.version}</version>
+            </dependency>
+
+            <!-- JSON 解析（示例用 Fastjson / Jackson 均可）-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>
